@@ -32,34 +32,29 @@
 					<div class="form-group col-xs-6 col-sm-6 col-md-12 col-lg-12">
 
 						<label for="name">Nombre del Cliente:</label>
-						<select class="form-control selectpicker name" data-live-search="true" id="name"
-								name="customer_id">
-							<?php foreach ($customers as $customer) : ?>
-								<option value="<?= $customer->id ?>"><?= $customer->name ?></option>
-							<?php endforeach; ?>
-						</select>
+						<input id="name" class="form-control" type="text" value="<?= $customer->name ?>" disabled>
 					</div>
 					<div class="form-group col-xs-6 col-sm-6 col-md-12 col-lg-12">
 						<label for="description">Persona de Contacto:</label>
 						<input id="description" class="form-control" type="text"
-							   placeholder="Daniel García" disabled>
+							   value="<?= $customer->description ?>" disabled>
 					</div>
 				</div>
 				<div class="col-md-6 section-2">
 					<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<label for="address">Dirección:</label>
 						<input id="address" class="form-control" type="text"
-							   placeholder="Calle Ejemplo, 2, 1 B" disabled>
+							   value="<?= $customer->address ?>" disabled>
 					</div>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<label for="postal_code">Código Postal:</label>
 						<input id="postal_code" class="form-control" type="number"
-							   placeholder="28039" disabled>
+							   value="<?= $customer->postal_code ?>" disabled>
 					</div>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<label for="city">Población:</label>
 						<input id="city" class="form-control" type="text"
-							   placeholder="Madrid" disabled>
+							   value="<?= $customer->city ?>" disabled>
 					</div>
 				</div>
 			</div>
@@ -97,7 +92,7 @@
 									<?php endforeach; ?>
 								</select>
 							</td>
-							<td class="description"><?= $products[0]->description ?></td>
+							<td class="description"><?= $sale_items[0]->description ?></td>
 							<td class="sale_price"><input class="form-control" type="number" min="0" step="any"
 														  value="<?= $products[0]->sale_price ?>"></td>
 							<td class="quantity"><input class="form-control" type="number" step="1" value="1"

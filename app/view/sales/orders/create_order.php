@@ -6,21 +6,22 @@
  * Time: 14:12
  */
 ?>
-<!-- HTML form for creating a sale -->
+<!-- HTML form for creating an order -->
 <div class="row">
 	<section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.php?c=sale&a=list_sales">Ventas</a></li>
-			<li class="breadcrumb-item active">Crear Venta</li>
+			<li class="breadcrumb-item"><a href="index.php?c=order&a=list_orders">Ventas</a></li>
+			<li class="breadcrumb-item"><a href="index.php?c=order&a=list_orders">Ofertas</a></li>
+			<li class="breadcrumb-item active">Crear Oferta</li>
 		</ol>
 	</section>
 </div>
 
 <div class="row">
 	<section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h2>Crear Venta</h2>
+		<h2>Crear Oferta</h2>
 	</section>
-	<form action='index.php?c=sale&a=create' method='post' class="col-xs-12 col-md-12">
+	<form action='index.php?c=order&a=create' method='post' class="col-xs-12 col-md-12">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<legend role="button" data-toggle="collapse" href="#form-customer-info" aria-expanded="false"
@@ -120,11 +121,11 @@
 							<tbody>
 							<tr>
 								<th>Subtotal:</th>
-								<td id="sale_subtotal"><?= $products[0]->sale_price ?> €</td>
+								<td id="order_subtotal"><?= $products[0]->sale_price ?> €</td>
 							</tr>
 							<tr>
 								<th>Total:</th>
-								<td id="sale_total"><?= round($products[0]->sale_price * 1.21, 2); ?>€</td>
+								<td id="order_total"><?= round($products[0]->sale_price * 1.21, 2); ?>€</td>
 							</tr>
 							</tbody>
 						</table>
@@ -132,7 +133,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<button type="submit" class="btn btn-success" name="action" value="create">Crear Venta</button>
+				<button type="submit" class="btn btn-success" name="action" value="create">Crear Oferta</button>
 			</div>
 		</div>
 	</form>

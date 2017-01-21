@@ -110,6 +110,8 @@ class Customer
         return $customer;
     }
 
+
+
     public static function readAll($from_record_num = null, $records_per_page = null)
     {
         $db = new DB;

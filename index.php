@@ -39,6 +39,6 @@ if (method_exists($controller, $action)) {
     $render_data = array(
         "title" => "Error 404",
         "info" => "File not found."
-    );
+        );
     $temp->errorPage($render_data);
 }

@@ -53,18 +53,35 @@
                                 <li>
                                     <a href="#">Proveedores</a>
                                 </li>
-                                <li><a href="index.php?c=sale&a=list_sales">Ventas</a>
-                                </li>
+                                <li ><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+										aria-haspopup="true" aria-expanded="false">Ventas <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="index.php?c=order&a=list_orders">Ofertas</a>
+											<a href="index.php?c=invoice&a=list_invoices">Facturas</a>
+										</li>
+									</ul>
+								</li>
                                 <li role="separator" class="divider"></li>
                             </ul>
+							<ul  class="nav navbar-nav pull-right">
+								<li>
+									<a data-toggle="dropdown" aria-haspopup="true"
+									   aria-expanded="false" href="#">
+										<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'Usuario'; ?>
+										<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="index.php?c=dashboard&a=profile">Perfil</a></li>
+										<li><a href="index.php?c=dashboard&a=logout">Salir</a></li>
+									</ul>
+								</li>
+							</ul>
 
-                            <ul class="nav navbar-nav navbar-right">
-                                <li data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a href="#"> <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'Usuario'; ?><span style="margin-left: 5px;" class="caret"></span></a></li>
-                                <ul class="dropdown-menu">
-                                    <li><a href="index.php?c=dashboard&a=profile">Perfil</a></li>
-                                    <li><a href="index.php?c=dashboard&a=logout">Salir</a></li>
-                                </ul>
-                            </ul>
+
+
+
+
+
                         </div>
                         <?php } ?>
                     </div>
