@@ -37,6 +37,7 @@
                     <td><?= $order->customer_name ?></td>
                     <td><?= $order->user_name?></td>
                     <td style='white-space:nowrap'>
+						<a href='index.php?c=order&a=generatePDF&id=<?= $order->id ?>' class="btn btn-warning"><span class="glyphicon glyphicon-file"></span>PDF</a>
                         <a href='index.php?c=order&a=details&id=<?= $order->id ?>' class='btn btn-primary left-margin'><span class='glyphicon glyphicon-list'></span> Detalles</a>
                         <a href='index.php?c=order&a=update&id=<?= $order->id ?>' class='btn btn-info left-margin'><span class='glyphicon glyphicon-list'></span> Modificar</a>
                         <a href='index.php?c=order&a=delete&id=<?= $order->id ?>' class='btn btn-danger delete-object'><span class='glyphicon glyphicon-list'></span> Eliminar</a>

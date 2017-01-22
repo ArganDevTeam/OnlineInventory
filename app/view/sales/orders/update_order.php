@@ -12,7 +12,7 @@
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="index.php?c=order&a=list_orders">Ventas</a></li>
 		<li class="breadcrumb-item"><a href="index.php?c=order&a=list_orders">Ofertas</a></li>
-		<li class="breadcrumb-item active">Crear Oferta</li>
+		<li class="breadcrumb-item active">Modificar Oferta</li>
 	</ol>
 	<section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<h2>Modificar Oferta</h2>
@@ -30,6 +30,7 @@
 							<label for="name">Nombre del Cliente:</label>
 							<select class="form-control selectpicker name" data-live-search="true" id="name"
 									name="customer_id">
+								<option value="<?= $customer->id?>"><?= $customer->name?></option>
 								<?php foreach ($customers as $customer) : ?>
 									<option value="<?= $customer->id ?>"><?= $customer->name ?></option>
 								<?php endforeach; ?>
@@ -91,27 +92,26 @@
 												<select data-width="fit" class="selectpicker" data-live-search="true"
 														id="model"
 														data-container="body">
+													<option value="<?= $order_item->id?>"><?= $order_item->model?></option>
 													<?php foreach ($products as $product): ?>
 														<option value="<?= $product->id ?>"> <?= $product->model ?></option>
 													<?php endforeach; ?>
 												</select>
 											</td>
-											<td class="description"><?= $products[0]->description ?></td>
+											<td class="description"><?= $order_item->description ?></td>
 											<td class="sale_price">
 												<div class="input-group"><input class="form-control" type="number"
 																				min="0"
 																				step="any"
-																				value="<?= $products[0]->sale_price ?>">
-													<span
-															class="input-group-addon">€</span></div>
+																				value="<?= $order_item->sale_price ?>">
+													<span class="input-group-addon">€</span></div>
 											</td>
 											<td class="quantity"><input class="form-control" type="number" step="1"
 																		value="1"
-																		name="products[<?= $products[0]->id ?>]" min="1"
-																		max="<?= $products[0]->quantity ?>"></td>
-											<td class="total"><?= $products[0]->sale_price * 1 ?></td>
-											<td><a class="btn btn-danger" href="javascript:void(0);"
-												   id="remove">Remove</a></td>
+																		name="products[<?= $order_item->id ?>]" min="1"
+																		max="<?= $order_item->quantity ?>"></td>
+											<td class="total"><?= $order_item->sale_price * 1 ?></td>
+											<td><a class="btn btn-danger" href="javascript:void(0);" id="remove">Remove</a></td>
 										</tr>
 									<?php endforeach; ?>
 									</tbody>
@@ -123,11 +123,11 @@
 								<tbody>
 								<tr>
 									<th>Subtotal:</th>
-									<td id="order_subtotal"><?= $products[0]->sale_price ?> €</td>
+									<td id="order_subtotal"><?= $order_item->sale_price ?> €</td>
 								</tr>
 								<tr>
 									<th>Total:</th>
-									<td id="order_total"><?= round($products[0]->sale_price * 1.21, 2); ?>€</td>
+									<td id="order_total"><?= round($order_item->sale_price * 1.21, 2); ?>€</td>
 								</tr>
 								</tbody>
 							</table>

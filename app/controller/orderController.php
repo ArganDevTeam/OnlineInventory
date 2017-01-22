@@ -94,6 +94,13 @@ class orderController extends Controller
 
     	if($this->checkAction("update")){
     		extract($_POST);
+    		$order->customer_id = $customer_id;
+    		$order->date_created = date('Y-m-d');
+    		$order->user_id = $this->currentUser()->id;
+    		$result = $order->update();
+    		if($result !== false){
+
+			}
 		}
 
     	$render_data['order'] = $order;
