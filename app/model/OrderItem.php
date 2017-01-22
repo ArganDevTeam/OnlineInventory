@@ -8,67 +8,79 @@
  */
 class OrderItem
 {
-    public $id;
-    public $order_id;
-    public $model;
-    public $sale_price;
-    public $product_id;
-    public $quantity;
-    public $db;
-    /**
-     * OrderItem constructor.
-     * @param $id
-     * @param $order_id
-     * @param $product_id
-     * @param $quantity
-     */
-    public function __construct($id = null, $order_id= null, $product_id= null, $quantity= null)
-    {
-        $this->id = $id;
-        $this->order_id = $order_id;
-        $this->product_id = $product_id;
-        $this->quantity = $quantity;
-    }
+	public $id;
+	public $order_id;
+	public $model;
+	public $sale_price;
+	public $product_id;
+	public $quantity;
+	public $db;
 
-    public function create(){
-        $this->db = new DB;
+	/**
+	 * OrderItem constructor.
+	 * @param $id
+	 * @param $order_id
+	 * @param $product_id
+	 * @param $quantity
+	 */
+	public function __construct($id = null, $order_id = null, $product_id = null, $quantity = null)
+	{
+		$this->id = $id;
+		$this->order_id = $order_id;
+		$this->product_id = $product_id;
+		$this->quantity = $quantity;
+	}
 
-        $query = "INSERT INTO `sales_order_item`(`order_id`, `product_id`, `quantity`) VALUES (?,?,?);";
-        $parameters = array($this->order_id,$this->product_id,$this->quantity);
+	public function create()
+	{
+		$this->db = new DB;
+
+		$query = "INSERT INTO `sales_order_item`(`order_id`, `product_id`, `quantity`) VALUES (?,?,?);";
+		$parameters = array($this->order_id, $this->product_id, $this->quantity);
 
 
-        if($this->db->run($query, $parameters)){
-            return $this->db->lastId();
-        }else{
-            return false;
-        }
-    }
+		if ($this->db->run($query, $parameters)) {
+			return $this->db->lastId();
+		} else {
+			return false;
+		}
+	}
 
-    public static function readAllByOrderID($order_id){
-        $db = new DB;
+	public function update(){
+		$this->db = new DB;
+		$query = "UPDATE `sales_order_item` SET `order_id`=?,`product_id`=?,`quantity`=? WHERE `id`=?";
+		$parameters = array($this->order_id,$this->product_id,$this->quantity,$this->id);
+		$result = $db->run($query, $parameters);
 
-        $sale_items = [];
+		return $result;
+	}
+
+	public static function readAllByOrderID($order_id)
+	{
+		$db = new DB;
+
+		$sale_items = [];
 		/*
         $query = "SELECT * FROM `sales_order_item` WHERE `order_id` = ".$order_id."
 		ORDER BY `id` ASC ";
 */
-	$query = "SELECT i.id, i.order_id, i.product_id, i.quantity, p.description, p.model, p.sale_price 
+		$query = "SELECT i.id, i.order_id, i.product_id, i.quantity, p.description, p.model, p.sale_price 
 				FROM `sales_order_item` as i 
 				JOIN `products` as p ON i.product_id = p.id 
-				WHERE `order_id` = ".$order_id." 
+				WHERE `order_id` = " . $order_id . " 
 				ORDER BY i.`id` ASC";
-        if ($db->run($query)) {
-            $results = $db->result();
-            foreach ($results as $result) {
-                $sale_item = new OrderItem();
-                foreach ($result as $property => $value) {
-                    $sale_item->$property = $value;
-                }
-                $sale_items[] = $sale_item;
-            }
-        }
+		if ($db->run($query)) {
+			$results = $db->result();
+			foreach ($results as $result) {
+				$sale_item = new OrderItem();
+				foreach ($result as $property => $value) {
+					$sale_item->$property = $value;
+				}
+				$sale_items[] = $sale_item;
+			}
+		}
 
-        return $sale_items;
-    }
+		return $sale_items;
+	}
 
 }

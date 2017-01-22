@@ -17,7 +17,7 @@
 	<section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<h2>Modificar Oferta</h2>
 
-		<form action='index.php?c=order&a=update' method='post' class="col-xs-12 col-md-12">
+		<form action='index.php?c=order&a=update&id=<?= $order->id ?>' method='post' class="col-xs-12 col-md-12">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<legend role="button" data-toggle="collapse" href="#form-customer-info" aria-expanded="false"
@@ -135,7 +135,7 @@
 					</div>
 				</div>
 				<div class="col-md-12">
-					<button type="submit" class="btn btn-success" name="action" value="create">Actualizar Oferta</button>
+					<button type="submit" class="btn btn-success" name="action" value="update">Actualizar Oferta</button>
 				</div>
 			</div>
 		</form>

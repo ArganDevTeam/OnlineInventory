@@ -91,15 +91,31 @@ class orderController extends Controller
     	$customers = Customer::readAll();
     	$products = Product::readAll();
     	$order_items = OrderItem::readAllByOrderID($id);
+		$injection = ["customers" => $customers, "products" => $products];
+		$render_data['injection'] = $injection;
 
-    	if($this->checkAction("update")){
-    		extract($_POST);
-    		$order->customer_id = $customer_id;
-    		$order->date_created = date('Y-m-d');
-    		$order->user_id = $this->currentUser()->id;
-    		$result = $order->update();
-    		if($result !== false){
+		if($this->checkAction("update")){
 
+
+			extract($_POST);
+			$order->customer_id = $customer_id;
+			$order->date_created = date('Y-m-d');
+			$order->user_id = $this->currentUser()->id;
+			$result = $order->update();
+			if($result !== false){
+				foreach ($products as $product_id => $quantity){
+					$order_item->order_id = $result;
+					$order_item->product_id = $product_id;
+					$order_item->quantity = $quantity;
+					$sale_order_items[] = $order_item;
+					//crea cada item que se ha escogido en la venta
+					$order_item->update();
+					//actualizar el producto en la tabla products restando a la cantidad actual la cantidad de venta
+					$product = Product::readOne($product_id);
+					$product->quantity = $product->quantity - $quantity;
+
+					$product->update();
+				}
 			}
 		}
 
@@ -136,5 +152,9 @@ class orderController extends Controller
 
         $this->render('sales/orders/list_orders', $render_data);
     }
+
+    public function generatePDF($id){
+
+	}
 
 }
