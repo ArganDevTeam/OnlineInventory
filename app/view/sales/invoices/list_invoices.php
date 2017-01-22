@@ -17,7 +17,7 @@
 		<a href='index.php?c=invoice&a=create' class='btn btn-success pull-right'>Añadir Factura</a>
 	</div>
 
-	<h2>Listado de Facturas</h2>
+	<h2>Facturas</h2>
 	<p>Mostrando <?= count($invoices) ?> factura(s).</p>
 	<div class="table-responsive ">
 		<table class="table table-hover table-bordered">

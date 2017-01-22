@@ -81,6 +81,29 @@ class orderController extends Controller
         $this->list_orders($render_data);
     }
 
+    public function update(){
+    	$id = $_GET['id'];
+    	$render_data = array();
+    	$render_data['title'] = "Actualizar Oferta";
+
+    	$order = Order::readOne($id);
+    	$customer = Customer::readOne($order->customer_id);
+    	$customers = Customer::readAll();
+    	$products = Product::readAll();
+    	$order_items = OrderItem::readAllByOrderID($id);
+
+    	if($this->checkAction("update")){
+    		extract($_POST);
+		}
+
+    	$render_data['order'] = $order;
+    	$render_data['customer'] = $customer;
+    	$render_data['customers'] = $customers;
+    	$render_data['products'] = $products;
+    	$render_data['order_items'] = $order_items;
+    	$this->render('sales/orders/update_order', $render_data);
+	}
+
     public function details() {
 		$id = $_GET['id'];
     	$render_data = array();

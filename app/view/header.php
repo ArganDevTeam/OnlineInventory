@@ -48,12 +48,14 @@
                                 <!-- TENGO QUE VER COMO HACER PARA QUE LA CLASS ACTIVE DEPENDA DE LA PAGINA EN LA QUE ESTOY -->
                                 <li><a href="index.php?c=product&a=list_products">Inventario<span class="sr-only">(current)</span></a>
                                 </li>
+
                                 <li><a href="index.php?c=customer&a=list_customers">Clientes</a>
                                 </li>
-                                <li>
-                                    <a href="#">Proveedores</a>
+
+                                <li><a href="#">Proveedores</a>
                                 </li>
-                                <li ><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+
+                                <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
 										aria-haspopup="true" aria-expanded="false">Ventas <span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li>
@@ -64,7 +66,7 @@
 								</li>
                                 <li role="separator" class="divider"></li>
                             </ul>
-							<ul  class="nav navbar-nav pull-right">
+							<ul class="nav navbar-nav navbar-right">
 								<li>
 									<a data-toggle="dropdown" aria-haspopup="true"
 									   aria-expanded="false" href="#">

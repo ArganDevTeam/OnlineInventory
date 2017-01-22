@@ -10,6 +10,8 @@ class OrderItem
 {
     public $id;
     public $order_id;
+    public $model;
+    public $sale_price;
     public $product_id;
     public $quantity;
     public $db;
@@ -46,11 +48,15 @@ class OrderItem
         $db = new DB;
 
         $sale_items = [];
-
+		/*
         $query = "SELECT * FROM `sales_order_item` WHERE `order_id` = ".$order_id."
 		ORDER BY `id` ASC ";
-
-
+*/
+	$query = "SELECT i.id, i.order_id, i.product_id, i.quantity, p.description, p.model, p.sale_price 
+				FROM `sales_order_item` as i 
+				JOIN `products` as p ON i.product_id = p.id 
+				WHERE `order_id` = ".$order_id." 
+				ORDER BY i.`id` ASC";
         if ($db->run($query)) {
             $results = $db->result();
             foreach ($results as $result) {

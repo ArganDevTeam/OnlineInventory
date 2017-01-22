@@ -9,6 +9,7 @@
 class invoiceController extends  Controller {
 
 
+
 	public function delete() {
 		$id = $_GET['id'];
 		extract($_GET);

@@ -8,4 +8,18 @@
  */
 class Invoice {
 
+	public $id;
+	public $order_id;
+	public $date_created;
+	public $invoice_number;
+
+	public $db;
+
+	public static function readAll(){
+		$db = new DB;
+		$invoices = [];
+		$query = "SELECT * FROM ";
+		return $invoices;
+	}
+
 }

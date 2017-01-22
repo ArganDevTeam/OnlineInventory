@@ -12,7 +12,6 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Ventas</a></li>
 		<li class="breadcrumb-item"><a href="#">Ofertas</a></li>
-        <li class="breadcrumb-item active">Ver Ofertas</li>
     </ol>
 
     <div class='right-button-margin'>
